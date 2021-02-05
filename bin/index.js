@@ -47,7 +47,7 @@ program
     const { releaseType, message } = await prompt(promptList);
 
     if (releaseType === "first-release")
-      execa(
+      await execa(
         standardVersion,
         [
           "--releaseCommitMessageFormat",
@@ -57,7 +57,7 @@ program
         { stdio: "inherit" }
       );
     else
-      execa(
+      await execa(
         standardVersion,
         [
           "-r",
