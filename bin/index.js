@@ -15,7 +15,7 @@ const messageTransformer = (input) => {
   const nowStr = getNowStr();
   return `chore(release): ${input
     .replace(/\$Date/, nowStr)
-    .replace(/\$Version/, version)}`;
+    .replace(/\$Version/, "{{currentTag}}")}`;
 };
 const promptList = [
   {
