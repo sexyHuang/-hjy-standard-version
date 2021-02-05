@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.1](https://github.com/sexyHuang/-hjy-standard-version/compare/v1.0.0...v1.0.1) (2021-02-05)
+
+
+### Bug Fixes
+
+* fr ([bfdf0dd](https://github.com/sexyHuang/-hjy-standard-version/commit/bfdf0ddb8a6eb5ea811b5f372b233ee947444f30))
+* version ([245141a](https://github.com/sexyHuang/-hjy-standard-version/commit/245141a347cc683261bc280f7db78e2e39a64070))
+
 ### [1.0.2](https://github.com/sexyHuang/-hjy-standard-version/compare/v1.0.1...v1.0.2) (2021-02-05)
 
 
