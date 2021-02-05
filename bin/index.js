@@ -68,6 +68,6 @@ program
         { stdio: "inherit" }
       );
 
-    execa("git", ["push", "origin", "--tags"]);
+    execa("git", ["push", "origin", "--tags"], { stdio: "inherit" });
   })
   .parseAsync(process.argv);
