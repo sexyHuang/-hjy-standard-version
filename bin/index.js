@@ -46,10 +46,14 @@ program
   .action(async () => {
     const { releaseType, message } = await prompt(promptList);
 
-    if (releaseTypes === "first-release")
+    if (releaseType === "first-release")
       execa(
         standardVersion,
-        ["--releaseCommitMessageFormat", messageTransformer(message), "-f"],
+        [
+          "--releaseCommitMessageFormat",
+          messageTransformer(message),
+          "--first-release",
+        ],
         { stdio: "inherit" }
       );
     else
