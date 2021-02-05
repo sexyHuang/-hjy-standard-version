@@ -9,6 +9,13 @@ All notable changes to this project will be documented in this file. See [standa
 
 * push ([a3f42ae](https://github.com/sexyHuang/-hjy-standard-version/commit/a3f42aea03c8c92405b58a87fe4e45213e4a8c30))
 
+### [1.0.2](https://github.com/sexyHuang/-hjy-standard-version/compare/v1.0.1...v1.0.2) (2021-02-05)
+
+
+### Features
+
+* push ([a3f42ae](https://github.com/sexyHuang/-hjy-standard-version/commit/a3f42aea03c8c92405b58a87fe4e45213e4a8c30))
+
 ### [1.0.1](https://github.com/sexyHuang/-hjy-standard-version/compare/v1.0.0...v1.0.1) (2021-02-05)
 
 
