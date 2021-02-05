@@ -1,6 +1,6 @@
 {
   "name": "@hjy/standard-version",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Replacement for `npm version` with automatic CHANGELOG generation",
   "main": "bin/index.js",
   "author": "huangjianyong",
