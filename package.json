@@ -1,0 +1,19 @@
+{
+  "name": "@hjy/standard-version",
+  "version": "1.0.0",
+  "description": "Replacement for `npm version` with automatic CHANGELOG generation",
+  "main": "bin/index.js",
+  "author": "huangjianyong",
+  "license": "MIT",
+  "bin": {
+    "sv": "./bin/index.js"
+  },
+  "scripts": {
+    "release": "./bin/index.js"
+  },
+  "dependencies": {
+    "commander": "^7.0.0",
+    "execa": "^5.0.0",
+    "inquirer": "^7.3.3"
+  }
+}
