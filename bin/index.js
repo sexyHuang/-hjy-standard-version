@@ -13,7 +13,9 @@ const getNowStr = () => {
 };
 const messageTransformer = (input) => {
   const nowStr = getNowStr();
-  return `chore(release): ${input.replace(/\$Date/, nowStr)}`;
+  return `chore(release): ${input
+    .replace(/\$Date/, nowStr)
+    .replace(/\$Version/, version)}`;
 };
 const promptList = [
   {
@@ -26,7 +28,8 @@ const promptList = [
   {
     type: "input",
     name: "message",
-    message: "请输入commit message( $Date 为当前日期占位符)",
+    message:
+      "请输入commit message( $Date 为当前日期占位符,$Version 为当前版本占位符)",
     transformer: messageTransformer,
     validate(input) {
       return input ? true : "请输入commit message!";
@@ -46,7 +49,7 @@ program
     if (releaseTypes === "first-release")
       execa(
         standardVersion,
-        ["-f", "--releaseCommitMessageFormat", messageTransformer(message)],
+        ["--releaseCommitMessageFormat", messageTransformer(message), "-f"],
         { stdio: "inherit" }
       );
     else

@@ -1,12 +1,17 @@
 {
   "name": "@hjy/standard-version",
-  "version": null,
+  "version": "1.0.0",
   "description": "Replacement for `npm version` with automatic CHANGELOG generation",
   "main": "bin/index.js",
   "author": "huangjianyong",
   "license": "MIT",
   "bin": {
     "sv": "./bin/index.js"
+  },
+  "homepage": "https://github.com/sexyHuang/-hjy-standard-version",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sexyHuang/-hjy-standard-version"
   },
   "scripts": {
     "release": "node ./bin/index.js"
