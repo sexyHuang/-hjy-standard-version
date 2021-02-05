@@ -1,6 +1,6 @@
 {
   "name": "@hjy/standard-version",
-  "version": "1.0.0",
+  "version": null,
   "description": "Replacement for `npm version` with automatic CHANGELOG generation",
   "main": "bin/index.js",
   "author": "huangjianyong",
@@ -9,11 +9,12 @@
     "sv": "./bin/index.js"
   },
   "scripts": {
-    "release": "./bin/index.js"
+    "release": "node ./bin/index.js"
   },
   "dependencies": {
     "commander": "^7.0.0",
     "execa": "^5.0.0",
-    "inquirer": "^7.3.3"
+    "inquirer": "^7.3.3",
+    "standard-version": "^9.1.0"
   }
 }
