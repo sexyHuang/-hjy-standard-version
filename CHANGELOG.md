@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.3](https://github.com/sexyHuang/-hjy-standard-version/compare/v1.1.2...v1.1.3) (2021-03-02)
+
+
+### Features
+
+* check remote before push ([e3ecb87](https://github.com/sexyHuang/-hjy-standard-version/commit/e3ecb876cae69b53378c9b4f224d65e3497a20a2))
+
+
+### Bug Fixes
+
+* 语法错误 ([50c6168](https://github.com/sexyHuang/-hjy-standard-version/commit/50c6168349dd6f4196bc297d05dfe05c7a6949bf))
+
 ### [1.1.2](https://github.com/sexyHuang/-hjy-standard-version/compare/v1.1.1...v1.1.2) (2021-03-02)
 
 
