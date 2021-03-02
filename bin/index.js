@@ -48,7 +48,6 @@ program
   .version(version, "-v, --version", "cli的版本")
   .addCommand(configCommand)
   .action(async () => {
-    const { releaseType, message } = await prompt(promptList);
     const { stdout: currentBranch } = await execa("git", [
       "branch",
       "--show-current",
@@ -59,6 +58,8 @@ program
       info("可通过sv config set legalBranch <BranchName>命令进行配置");
       process.exit(0);
     }
+    const { releaseType, message } = await prompt(promptList);
+
     if (releaseType === "first-release")
       await execa(
         standardVersion,
