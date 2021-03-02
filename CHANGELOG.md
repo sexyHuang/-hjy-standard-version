@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.2](https://github.com/sexyHuang/-hjy-standard-version/compare/v1.1.1...v1.1.2) (2021-03-02)
+
+
+### Features
+
+* only push current branch tags ([1c5183a](https://github.com/sexyHuang/-hjy-standard-version/commit/1c5183a640cb66d2cf095f1a62101f9b5317338a))
+
 ### [1.1.1](https://github.com/sexyHuang/-hjy-standard-version/compare/v1.1.0...v1.1.1) (2021-03-02)
 
 
