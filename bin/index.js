@@ -40,6 +40,15 @@ const promptList = [
   },
 ];
 
+const isSetRemote = ()=>{
+  try {
+    await execa('git',['ls-remote'])
+    return true;
+  } catch(e){
+    return false
+  }
+}
+
 const standardVersion = join(
   __dirname,
   "./../node_modules/.bin/standard-version"
@@ -47,8 +56,9 @@ const standardVersion = join(
 program
   .version(version, "-v, --version", "cli的版本")
   .option("-i, --ignore", "忽略分支检查")
+  .option("-p, --push", "推送到远程")
   .addCommand(configCommand)
-  .action(async ({ ignore }) => {
+  .action(async ({ ignore ,push}) => {
     const { stdout: currentBranch } = await execa("git", [
       "branch",
       "--show-current",
@@ -82,6 +92,13 @@ program
         ],
         { stdio: "inherit" }
       );
+
+    if(!push) return;
+    if(!await isSetRemote()){
+      error('未配置远程仓库！');
+      process.exit();
+    }
+
     await execa("git", ["push"], { stdio: "inherit" });
     await execa("git", ["push", "--follow-tags", "origin", currentBranch], {
       stdio: "inherit",
