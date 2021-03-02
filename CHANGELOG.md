@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0](https://github.com/sexyHuang/-hjy-standard-version/compare/v1.0.4...v1.1.0) (2021-03-02)
+
+
+### Features
+
+* brach check ([e10760f](https://github.com/sexyHuang/-hjy-standard-version/commit/e10760fc77ede04f4ecbaa7097a32cfcdd7f1a9b))
+* branch check ([a074865](https://github.com/sexyHuang/-hjy-standard-version/commit/a074865c33615144712c98df92d3f8779d4c2400))
+* ignore mode ([5d677f9](https://github.com/sexyHuang/-hjy-standard-version/commit/5d677f9b32698fc04da0abaf32f3ba02b150863c))
+
 ### [1.0.4](https://github.com/sexyHuang/-hjy-standard-version/compare/v1.0.3...v1.0.4) (2021-02-05)
 
 ### [1.0.3](https://github.com/sexyHuang/-hjy-standard-version/compare/v1.0.2...v1.0.3) (2021-02-05)
