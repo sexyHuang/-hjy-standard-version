@@ -14,7 +14,7 @@
     "url": "https://github.com/sexyHuang/-hjy-standard-version"
   },
   "scripts": {
-    "release": "node ./bin/index.js -i"
+    "release": "node ./bin/index.js -i && nrm use npm && npm publish && nrm use taobao"
   },
   "dependencies": {
     "chalk": "^4.1.0",
