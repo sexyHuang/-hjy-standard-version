@@ -14,7 +14,7 @@
     "url": "https://github.com/sexyHuang/-hjy-standard-version"
   },
   "scripts": {
-    "release": "node ./bin/index.js"
+    "release": "node ./bin/index.js -i"
   },
   "dependencies": {
     "chalk": "^4.1.0",

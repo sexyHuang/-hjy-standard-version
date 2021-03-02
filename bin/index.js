@@ -46,14 +46,15 @@ const standardVersion = join(
 );
 program
   .version(version, "-v, --version", "cli的版本")
+  .option("-i, --ignore", "忽略分支检查")
   .addCommand(configCommand)
-  .action(async () => {
+  .action(async ({ ignore }) => {
     const { stdout: currentBranch } = await execa("git", [
       "branch",
       "--show-current",
     ]);
 
-    if (!new RegExp(config.legalBranch).test(currentBranch)) {
+    if (!ignore && !new RegExp(config.legalBranch).test(currentBranch)) {
       error("不能在该分支上进行tag操作。");
       info("可通过sv config set legalBranch <BranchName>命令进行配置");
       process.exit(0);
