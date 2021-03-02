@@ -115,6 +115,6 @@ program
 
     if (!onlyPush) await tagScript();
 
-    if (onlyPush || push) await pushScript();
+    if (onlyPush || push) await pushScript(currentBranch);
   })
   .parseAsync(process.argv);
