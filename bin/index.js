@@ -49,12 +49,11 @@ const isSetRemote = async () => {
   }
 };
 
-const isLegalBranch = async (ignore) => {
+const getCurrentBranch = async () =>
+  (await execa("git", ["branch", "--show-current"])).stdout;
+
+const isLegalBranch = (currentBranch, ignore) => {
   if (ignore) return true;
-  const { stdout: currentBranch } = await execa("git", [
-    "branch",
-    "--show-current",
-  ]);
   return !new RegExp(config.legalBranch).test(currentBranch);
 };
 
@@ -88,7 +87,7 @@ const tagScript = async () => {
       { stdio: "inherit" }
     );
 };
-const pushScript = async () => {
+const pushScript = async (currentBranch) => {
   if (!(await isSetRemote())) {
     error("未配置远程仓库！");
     process.exit();
@@ -106,7 +105,9 @@ program
   .option("--only-push", "只推送到远程")
   .addCommand(configCommand)
   .action(async ({ ignore, push, onlyPush }) => {
-    if (!(await isLegalBranch(ignore))) {
+    const currentBranch = await getCurrentBranch();
+
+    if (!isLegalBranch(currentBranch, ignore)) {
       error("不能在该分支上进行tag操作。");
       info("可通过sv config set legalBranch <BranchName>命令进行配置");
       process.exit(0);
