@@ -82,7 +82,9 @@ program
         ],
         { stdio: "inherit" }
       );
-    execa("git", ["push"], { stdio: "inherit" });
-    execa("git", ["push", "origin", "--tags"], { stdio: "inherit" });
+    await execa("git", ["push"], { stdio: "inherit" });
+    await execa("git", ["push", "--follow-tags", "origin", currentBranch], {
+      stdio: "inherit",
+    });
   })
   .parseAsync(process.argv);
