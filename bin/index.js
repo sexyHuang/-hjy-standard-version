@@ -54,7 +54,7 @@ const getCurrentBranch = async () =>
 
 const isLegalBranch = (currentBranch, ignore) => {
   if (ignore) return true;
-  return !new RegExp(config.legalBranch).test(currentBranch);
+  return new RegExp(config.legalBranch).test(currentBranch);
 };
 
 const standardVersion = join(
