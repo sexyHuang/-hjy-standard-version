@@ -49,59 +49,71 @@ const isSetRemote = async () => {
   }
 };
 
+const isLegalBranch = async (ignore) => {
+  if (ignore) return true;
+  const { stdout: currentBranch } = await execa("git", [
+    "branch",
+    "--show-current",
+  ]);
+  return !new RegExp(config.legalBranch).test(currentBranch);
+};
+
 const standardVersion = join(
   __dirname,
   "./../node_modules/.bin/standard-version"
 );
+
+const tagScript = async () => {
+  const { releaseType, message } = await prompt(promptList);
+
+  if (releaseType === "first-release")
+    await execa(
+      standardVersion,
+      [
+        "--releaseCommitMessageFormat",
+        messageTransformer(message),
+        "--first-release",
+      ],
+      { stdio: "inherit" }
+    );
+  else
+    await execa(
+      standardVersion,
+      [
+        "-r",
+        releaseType,
+        "--releaseCommitMessageFormat",
+        messageTransformer(message),
+      ],
+      { stdio: "inherit" }
+    );
+};
+const pushScript = async () => {
+  if (!(await isSetRemote())) {
+    error("未配置远程仓库！");
+    process.exit();
+  }
+
+  await execa("git", ["push"], { stdio: "inherit" });
+  await execa("git", ["push", "--follow-tags", "origin", currentBranch], {
+    stdio: "inherit",
+  });
+};
 program
   .version(version, "-v, --version", "cli的版本")
   .option("-i, --ignore", "忽略分支检查")
   .option("-p, --push", "推送到远程")
+  .option("--only-push", "只推送到远程")
   .addCommand(configCommand)
-  .action(async ({ ignore, push }) => {
-    const { stdout: currentBranch } = await execa("git", [
-      "branch",
-      "--show-current",
-    ]);
-
-    if (!ignore && !new RegExp(config.legalBranch).test(currentBranch)) {
+  .action(async ({ ignore, push, onlyPush }) => {
+    if (!(await isLegalBranch(ignore))) {
       error("不能在该分支上进行tag操作。");
       info("可通过sv config set legalBranch <BranchName>命令进行配置");
       process.exit(0);
     }
-    const { releaseType, message } = await prompt(promptList);
 
-    if (releaseType === "first-release")
-      await execa(
-        standardVersion,
-        [
-          "--releaseCommitMessageFormat",
-          messageTransformer(message),
-          "--first-release",
-        ],
-        { stdio: "inherit" }
-      );
-    else
-      await execa(
-        standardVersion,
-        [
-          "-r",
-          releaseType,
-          "--releaseCommitMessageFormat",
-          messageTransformer(message),
-        ],
-        { stdio: "inherit" }
-      );
+    if (!onlyPush) await tagScript();
 
-    if (!push) return;
-    if (!(await isSetRemote())) {
-      error("未配置远程仓库！");
-      process.exit();
-    }
-
-    await execa("git", ["push"], { stdio: "inherit" });
-    await execa("git", ["push", "--follow-tags", "origin", currentBranch], {
-      stdio: "inherit",
-    });
+    if (onlyPush || push) await pushScript();
   })
   .parseAsync(process.argv);
