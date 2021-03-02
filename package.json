@@ -17,6 +17,7 @@
     "release": "node ./bin/index.js"
   },
   "dependencies": {
+    "chalk": "^4.1.0",
     "commander": "^7.0.0",
     "execa": "^5.0.0",
     "inquirer": "^7.3.3",

@@ -5,6 +5,9 @@ const { prompt } = require("inquirer");
 const { join } = require("path");
 const { version } = require("./../package.json");
 const execa = require("execa");
+const configCommand = require("./configCommand");
+const config = require("../config/index.json");
+const { error, info } = require("./log");
 
 const releaseTypes = ["major", "minor", "patch", "first-release"];
 const getNowStr = () => {
@@ -43,9 +46,19 @@ const standardVersion = join(
 );
 program
   .version(version, "-v, --version", "cli的版本")
+  .addCommand(configCommand)
   .action(async () => {
     const { releaseType, message } = await prompt(promptList);
+    const { stdout: currentBranch } = await execa("git", [
+      "branch",
+      "--show-current",
+    ]);
 
+    if (!new RegExp(config.legalBranch).test(currentBranch)) {
+      error("不能在该分支上进行tag操作。");
+      info("可通过sv config set legalBranch <BranchName>命令进行配置");
+      process.exit(0);
+    }
     if (releaseType === "first-release")
       await execa(
         standardVersion,
@@ -67,7 +80,7 @@ program
         ],
         { stdio: "inherit" }
       );
-
+    execa("git", ["push"], { stdio: "inherit" });
     execa("git", ["push", "origin", "--tags"], { stdio: "inherit" });
   })
   .parseAsync(process.argv);
