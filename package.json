@@ -22,5 +22,8 @@
     "execa": "^5.0.0",
     "inquirer": "^7.3.3",
     "standard-version": "^9.1.0"
+  },
+  "devDependencies": {
+    "@types/standard-version": "^7.0.0"
   }
 }
