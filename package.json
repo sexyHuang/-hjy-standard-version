@@ -1,6 +1,6 @@
 {
   "name": "hjy-sv",
-  "version": "1.2.0-alpha.2",
+  "version": "1.2.0-alpha.3",
   "description": "Replacement for `npm version` with automatic CHANGELOG generation",
   "main": "bin/index.js",
   "author": "huangjianyong",
