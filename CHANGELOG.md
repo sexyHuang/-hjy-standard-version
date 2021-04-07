@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0-alpha.2](https://github.com/sexyHuang/-hjy-standard-version/compare/v1.2.0-alpha.1...v1.2.0-alpha.2) (2021-04-07)
+
+
+### Features
+
+* 改用npm发布 ([bc3fe51](https://github.com/sexyHuang/-hjy-standard-version/commit/bc3fe516c9523ec5ef758f5538db59141d131b5f))
+
+
+### Bug Fixes
+
+* **lib/getcontent:** json化 ([6e878db](https://github.com/sexyHuang/-hjy-standard-version/commit/6e878dbff5c5320f49d34b2742d2a01087e0cbef))
+
 ## [1.2.0-alpha.1](https://github.com/sexyHuang/-hjy-standard-version/compare/v1.2.0-alpha.0...v1.2.0-alpha.1) (2021-04-07)
 
 ## [1.2.0-alpha.0](https://github.com/sexyHuang/-hjy-standard-version/compare/v1.1.7...v1.2.0-alpha.0) (2021-04-07)
