@@ -131,14 +131,16 @@ const pushScript = async (currentBranch) => {
     error("未配置远程仓库！");
     process.exit();
   }
-
-  await execa("git", ["push"], { stdio: "inherit" });
+  info("开始推送到远程仓库...");
+  // await execa("git", ["push"], { stdio: "inherit" });
   await execa("git", ["push", "--follow-tags", "origin", currentBranch], {
     stdio: "inherit",
   });
+  success("完成推送");
 };
 
 const publishScript = async (prerelease) => {
+  info("开始发布...");
   if (prerelease) {
     await execa("npm", ["publish", "--tag", prerelease], { stdio: "inherit" });
   } else {

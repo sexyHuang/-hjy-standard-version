@@ -9,7 +9,7 @@ const warning = (...text) =>
 const info = (...text) => console.log(chalk.cyan(figures.info, " ", ...text));
 
 const success = (...text) =>
-  console.log(chalk.green(figures.tick), " ", ...text);
+  console.log(chalk.green(figures.tick, " ", ...text));
 module.exports = {
   error,
   warning,
