@@ -8,7 +8,7 @@ const execa = require("execa");
 const configCommand = require("./configCommand");
 
 const standardVersion = require("standard-version");
-const { getConfiguration } = require("standard-version/lib/configuration");
+const { getConfiguration } = require("./lib/configuration");
 const { error, info, success } = require("./lib/log");
 const getContent = require("./lib/getContent");
 
