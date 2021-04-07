@@ -6,7 +6,7 @@ const { prompt } = require("inquirer");
 const { version } = require("./../package.json");
 const execa = require("execa");
 const configCommand = require("./configCommand");
-const config = require("../config/index.json");
+
 const standardVersion = require("standard-version");
 const { getConfiguration } = require("standard-version/lib/configuration");
 const { error, info, success } = require("./lib/log");
@@ -83,7 +83,7 @@ const getCurrentBranch = async () =>
 
 const isLegalBranch = (currentBranch, ignore) => {
   if (ignore) return true;
-  return new RegExp(config.legalBranch).test(currentBranch);
+  return new RegExp(svConfig.legalBranch).test(currentBranch);
 };
 
 // const standardVersion = join(
@@ -155,7 +155,8 @@ program
   .option("--publish", "发布到npm")
   .option("--only-push", "只推送到远程")
   .addCommand(configCommand)
-  .action(async ({ ignore, push, onlyPush, publish }) => {
+  .action(async (options) => {
+    const { ignore, push, onlyPush, publish } = { ...svConfig, ...options };
     const currentBranch = await getCurrentBranch();
 
     if (!isLegalBranch(currentBranch, ignore)) {

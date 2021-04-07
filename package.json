@@ -14,14 +14,15 @@
     "url": "https://github.com/sexyHuang/-hjy-standard-version"
   },
   "scripts": {
-    "release": "node ./bin/index.js -i -p --publish"
+    "release": "node ./bin/index.js"
   },
   "dependencies": {
     "chalk": "^4.1.0",
     "commander": "^7.0.0",
     "execa": "^5.0.0",
-    "inquirer": "^7.3.3",
     "figures": "^3.2.0",
+    "findup": "^0.1.5",
+    "inquirer": "^7.3.3",
     "standard-version": "^9.1.0"
   },
   "devDependencies": {
