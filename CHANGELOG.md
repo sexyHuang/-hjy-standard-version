@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0-alpha.4](https://github.com/sexyHuang/-hjy-standard-version/compare/v1.2.0-alpha.3...v1.2.0-alpha.4) (2021-04-07)
+
+
+### Features
+
+* 增加通过配置文件控制 ([d5f49fe](https://github.com/sexyHuang/-hjy-standard-version/commit/d5f49fe4fb8413e3f2a46314c62ad8cd94809495))
+* **lib/log.js:** 格式优化 ([dd288ca](https://github.com/sexyHuang/-hjy-standard-version/commit/dd288ca0827c369c30ca688418a692a6ca4dae2d))
+
 ## [1.2.0-alpha.3](https://github.com/sexyHuang/-hjy-standard-version/compare/v1.2.0-alpha.2...v1.2.0-alpha.3) (2021-04-07)
 
 
