@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0-alpha.6](https://github.com/sexyHuang/-hjy-standard-version/compare/v1.2.0-alpha.5...v1.2.0-alpha.6) (2021-04-07)
+
+
+### Bug Fixes
+
+* **lib/configuation.js:** 依赖问题 ([39e677b](https://github.com/sexyHuang/-hjy-standard-version/commit/39e677bde1a2681b352b38ef52ebd1c9cbe18c4b))
+* **lib/configuration.js:** 路径问题 ([ecd4ce8](https://github.com/sexyHuang/-hjy-standard-version/commit/ecd4ce836f6d3dba2ff36ae35a1202cb7b2472f0))
+
 ## [1.2.0-alpha.5](https://github.com/sexyHuang/-hjy-standard-version/compare/v1.2.0-alpha.4...v1.2.0-alpha.5) (2021-04-07)
 
 ## [1.2.0-alpha.4](https://github.com/sexyHuang/-hjy-standard-version/compare/v1.2.0-alpha.3...v1.2.0-alpha.4) (2021-04-07)
