@@ -1,5 +1,5 @@
 const { Command } = require("commander");
-const { error, warning, info } = require("./log");
+const { error, warning, info } = require("./lib/log");
 const fs = require("fs");
 const path = require("path");
 

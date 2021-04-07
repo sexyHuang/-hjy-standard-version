@@ -2,17 +2,17 @@
 
 const { program } = require("commander");
 const { prompt } = require("inquirer");
-const { join, resolve } = require("path");
+
 const { version } = require("./../package.json");
 const execa = require("execa");
 const configCommand = require("./configCommand");
 const config = require("../config/index.json");
 const standardVersion = require("standard-version");
 const { getConfiguration } = require("standard-version/lib/configuration");
-const { error, info } = require("./log");
+const { error, info, success } = require("./lib/log");
+const getContent = require("./lib/getContent");
 
-const pkgPath = resolve(process.cwd(), updater.filename);
-const package = fs.readFileSync(pkgPath, "utf8");
+const package = getContent();
 const svConfig = getConfiguration();
 
 const releaseTypes = ["major", "minor", "patch", "first-release", "prerelease"];
@@ -98,10 +98,9 @@ const tagScript = async () => {
     prerelease,
     customPrereleasePrefix,
   } = await prompt(promptList);
-  let config = { ...svConfig, message: messageTransformer(message) };
+  let config = {};
   if (releaseType === "first-release")
     config = {
-      ...config,
       firstRelease: true,
     };
   else if (releaseType === "prerelease") {
@@ -109,18 +108,22 @@ const tagScript = async () => {
       prerelease = customPrereleasePrefix;
     }
     config = {
-      ...config,
-      message,
       prerelease,
     };
   } else {
     config = {
-      ...config,
       releaseAs: releaseType,
     };
   }
 
-  await standardVersion(config);
+  await standardVersion({
+    ...svConfig,
+    releaseCommitMessageFormat: messageTransformer(message),
+    silent: true,
+    ...config,
+  });
+  const { version } = getContent();
+  success(`tagging release ${version}`);
   return prerelease;
 };
 const pushScript = async (currentBranch) => {
