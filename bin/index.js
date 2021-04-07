@@ -2,7 +2,7 @@
 
 const { program } = require("commander");
 const { prompt } = require("inquirer");
-const { join } = require("path");
+const { join, resolve } = require("path");
 const { version } = require("./../package.json");
 const execa = require("execa");
 const configCommand = require("./configCommand");
@@ -11,6 +11,8 @@ const standardVersion = require("standard-version");
 const { getConfiguration } = require("standard-version/lib/configuration");
 const { error, info } = require("./log");
 
+const pkgPath = resolve(process.cwd(), updater.filename);
+const package = fs.readFileSync(pkgPath, "utf8");
 const svConfig = getConfiguration();
 
 const releaseTypes = ["major", "minor", "patch", "first-release", "prerelease"];
@@ -114,11 +116,12 @@ const tagScript = async () => {
   } else {
     config = {
       ...config,
-      releaseType,
+      releaseAs: releaseType,
     };
   }
 
-  return standardVersion(config);
+  await standardVersion(config);
+  return prerelease;
 };
 const pushScript = async (currentBranch) => {
   if (!(await isSetRemote())) {
@@ -131,13 +134,23 @@ const pushScript = async (currentBranch) => {
     stdio: "inherit",
   });
 };
+
+const publishScript = async (prerelease) => {
+  if (prerelease) {
+    await execa("yarn", ["publish", "--tag", prerelease], { stdio: "inherit" });
+  } else {
+    await execa("yarn", ["publish"], { stdio: "inherit" });
+  }
+};
+
 program
   .version(version, "-v, --version", "cli的版本")
   .option("-i, --ignore", "忽略分支检查")
   .option("-p, --push", "推送到远程")
+  .option("--publish", "发布到npm")
   .option("--only-push", "只推送到远程")
   .addCommand(configCommand)
-  .action(async ({ ignore, push, onlyPush }) => {
+  .action(async ({ ignore, push, onlyPush, publish }) => {
     const currentBranch = await getCurrentBranch();
 
     if (!isLegalBranch(currentBranch, ignore)) {
@@ -145,9 +158,15 @@ program
       info("可通过sv config set legalBranch <BranchName>命令进行配置");
       process.exit(0);
     }
-
-    if (!onlyPush) await tagScript();
+    let prerelease;
+    if (!onlyPush) prerelease = await tagScript();
 
     if (onlyPush || push) await pushScript(currentBranch);
+    if (!onlyPush && publish && !package.private) {
+      if (!push) {
+        info("该发布版本代码还未推送至远程仓库");
+      }
+      await publishScript(prerelease);
+    }
   })
   .parseAsync(process.argv);
