@@ -140,9 +140,9 @@ const pushScript = async (currentBranch) => {
 
 const publishScript = async (prerelease) => {
   if (prerelease) {
-    await execa("yarn", ["publish", "--tag", prerelease], { stdio: "inherit" });
+    await execa("npm", ["publish", "--tag", prerelease], { stdio: "inherit" });
   } else {
-    await execa("yarn", ["publish"], { stdio: "inherit" });
+    await execa("npm", ["publish"], { stdio: "inherit" });
   }
 };
 
