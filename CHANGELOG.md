@@ -2,10 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0-alpha.0](https://github.com/sexyHuang/-hjy-standard-version/compare/v1.1.7...v1.2.0-alpha.0) (2021-04-07)
+
+
 ### Features
 
-- 流程优化 ([87bbf1f](https://github.com/sexyHuang/-hjy-standard-version/commit/87bbf1f276950be0aabb3f142ada6e02efe77278))
-- 优化选项 ([a72b5eb](https://github.com/sexyHuang/-hjy-standard-version/commit/a72b5ebd8ea79b788f0875edf1848668447328a6))
+* 流程优化 ([87bbf1f](https://github.com/sexyHuang/-hjy-standard-version/commit/87bbf1f276950be0aabb3f142ada6e02efe77278))
+* 优化选项 ([a72b5eb](https://github.com/sexyHuang/-hjy-standard-version/commit/a72b5ebd8ea79b788f0875edf1848668447328a6))
+* something change ([24e2dbb](https://github.com/sexyHuang/-hjy-standard-version/commit/24e2dbbcaf2ec1c8250e5dba6cf304781e03769c))
 
 ### [1.1.7](https://github.com/sexyHuang/-hjy-standard-version/compare/v1.1.6...v1.1.7) (2021-03-02)
 
